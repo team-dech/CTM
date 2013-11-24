@@ -33,7 +33,7 @@ public class BlockGlassCT extends BlockGlass
     @Override
     public Icon getIcon(int side, int meta)
     {
-        return textures[meta][0];
+        return meta < 3 ? textures[meta][0] : textures[0][0];
     }
     
     @Override

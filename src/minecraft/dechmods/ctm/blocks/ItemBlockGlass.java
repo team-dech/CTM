@@ -18,8 +18,8 @@ public class ItemBlockGlass extends ItemBlock
     @Override
     public String getUnlocalizedName(ItemStack stack)
     {
-        if (stack.getItemDamage() == 0) return super.getUnlocalizedName();
-        return stack.getItemDamage() < 3 ? super.getUnlocalizedName() + "." + stack.getItemDamage() : super.getUnlocalizedName() + "." + 1;
+        if (stack.getItemDamage() == 0) return "tile.glass";
+        return stack.getItemDamage() < 3 ? "tile.glass." + stack.getItemDamage() : "tile.glass";
     }
     
     @Override

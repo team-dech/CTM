@@ -15,7 +15,7 @@ import dechmods.ctm.blocks.BlockBookshelfCT;
 import dechmods.ctm.blocks.BlockGlassCT;
 import dechmods.ctm.blocks.ItemBlockGlass;
 
-@Mod(modid = "ctm", name = "Connected Textures Mod", version = "0.2")
+@Mod(modid = "ctm", name = "Connected Textures Mod", version = "0.3")
 @NetworkMod(clientSideRequired = true, serverSideRequired = false)
 public class ConnectedTexturesMod
 {
@@ -34,8 +34,8 @@ public class ConnectedTexturesMod
         
         Block.blocksList[47] = null;
         bookshelf = new BlockBookshelfCT();
-
-        LanguageRegistry.instance().addStringLocalization("tile.glass.0.name", "Glass");
+        
+        LanguageRegistry.instance().addStringLocalization("tile.glass.name", "Glass");
         LanguageRegistry.instance().addStringLocalization("tile.glass.1.name", "Wood Encased Glass");
         LanguageRegistry.instance().addStringLocalization("tile.glass.2.name", "Clear Glass");
         
