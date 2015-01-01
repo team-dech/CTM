@@ -1,0 +1,102 @@
+buildscript {
+    repositories {
+        mavenCentral()
+        maven {
+            name = "forge"
+            url = "http://files.minecraftforge.net/maven"
+        }
+        maven {
+            name = "sonatype"
+            url = "https://oss.sonatype.org/content/repositories/snapshots/"
+        }
+    }
+    dependencies {
+        classpath 'net.minecraftforge.gradle:ForgeGradle:1.2-SNAPSHOT'
+    }
+}
+
+//add dependency repositories
+repositories{
+    maven{
+        name = "chickenbones"
+        url = "http://chickenbones.net/maven"
+    }
+    maven{
+        // The repo from which to get waila
+        name "Mobius Repo"
+        url "http://mobiusstrip.eu/maven"
+    }
+}
+
+apply plugin: 'forge'
+
+ext.configFile = file "build.properties"
+
+configFile.withReader {
+    // read config.  it shall from now on be referenced as simply config or as project.config
+    def prop = new Properties()
+    prop.load(it)
+    project.ext.config = new ConfigSlurper().parse prop
+}
+
+sourceCompatibility = JavaVersion.VERSION_1_6
+targetCompatibility = JavaVersion.VERSION_1_6
+
+version = "${config.mod_version}"
+group= "com.dogz.mods.CTM"
+archivesBaseName = "${config.mod_name}"
+
+minecraft {
+    version = "${config.minecraft_version}-${config.forge_version}"
+	runDir = "${config.run_dir}"
+
+    replaceIn "API/DependentInfo.java"
+    replace "@MOD_VERSION@", "${config.mod_version}"
+    replace "@MOD_ID@", "${config.mod_id}"
+    replace "@MOD_NAME@", "${config.mod_name}"
+}
+
+version = "${config.minecraft_version}-"+version
+
+dependencies {
+    compile "mcp.mobius.waila:Waila:${config.waila_version}"
+
+    compile fileTree(dir: 'libs', include: '*.jar,*.zip')
+}
+
+processResources
+{
+    inputs.property "version", project.version
+    inputs.property "mcversion", project.minecraft.version
+
+    from(sourceSets.main.resources.srcDirs) {
+        include 'mcmod.info'
+                
+        expand 'version':project.version, 'mcversion':project.minecraft.version
+    }
+        
+    from(sourceSets.main.resources.srcDirs) {
+        exclude 'mcmod.info'
+    }
+}
+
+//Add universal identifier to jar name
+jar {
+    classifier = 'universal'
+}
+
+task deobfJar(type: Jar) {
+    from sourceSets.main.output
+    classifier = 'deobf'
+}
+
+task sourceJar(type: Jar) {
+    from sourceSets.main.allSource
+    classifier = 'source'
+}
+
+artifacts {
+    archives deobfJar
+}
+
+build.dependsOn sourceJar

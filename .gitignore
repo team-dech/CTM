@@ -1,1 +1,14 @@
-*.db
+*.class
+/gradle/*
+/gradlew
+/*.bat
+/run/*
+/*.iml
+/.idea/*
+/.gradle/*
+/*.ipr
+/*.iws
+/build/*
+/classes/*
+/out*
+villager
