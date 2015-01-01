@@ -17,7 +17,7 @@ import java.util.Random;
 
 public class BlockGlassCT extends BlockCTBase
 {
-	public BlockGlassCT()
+	public BlockGlassCT(String... types)
 	{
 		super(Material.glass, Block.soundTypeGlass, CreativeTabs.tabBlock, "glass", "glass", "woodGlass", "clearGlass");
 	}
