@@ -49,11 +49,6 @@ archivesBaseName = "${config.mod_name}"
 minecraft {
     version = "${config.minecraft_version}-${config.forge_version}"
 	runDir = "${config.run_dir}"
-
-    replaceIn "API/DependentInfo.java"
-    replace "@MOD_VERSION@", "${config.mod_version}"
-    replace "@MOD_ID@", "${config.mod_id}"
-    replace "@MOD_NAME@", "${config.mod_name}"
 }
 
 version = "${config.minecraft_version}-"+version
