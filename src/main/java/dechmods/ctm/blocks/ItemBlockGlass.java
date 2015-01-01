@@ -1,17 +1,18 @@
 package dechmods.ctm.blocks;
 
-import java.util.List;
-
 import net.minecraft.block.Block;
 import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
 
+import java.util.List;
+
 public class ItemBlockGlass extends ItemBlock
 {
-    public ItemBlockGlass(int id)
+    public ItemBlockGlass(Block block)
     {
-        super(id - 256);
+        super(block);
         setHasSubtypes(true);
     }
     
@@ -29,10 +30,11 @@ public class ItemBlockGlass extends ItemBlock
     }
     
     @Override
-    public void getSubItems(int id, CreativeTabs tab, List itemList)
+    public void getSubItems(Item item, CreativeTabs tab, List itemList)
     {
-        itemList.add(new ItemStack(id, 1, 0));
-        itemList.add(new ItemStack(id, 1, 1));
-        itemList.add(new ItemStack(id, 1, 2));
+        itemList.add(new ItemStack(item, 1, 0));
+        itemList.add(new ItemStack(item, 1, 1));
+        itemList.add(new ItemStack(item, 1, 2));
+        itemList.add(new ItemStack(item, 1, 3));
     }
 }
