@@ -18,6 +18,8 @@ public class ConnectedTexturesMod
     @EventHandler
     public void load(FMLInitializationEvent event)
     {
+		//TODO: find away to override the vanilla blocks
+		
         glass = new BlockGlassCT();
         GameRegistry.registerBlock(glass, ItemBlockGlass.class, "glass_ctm");
 

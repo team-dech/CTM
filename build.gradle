@@ -43,7 +43,7 @@ sourceCompatibility = JavaVersion.VERSION_1_6
 targetCompatibility = JavaVersion.VERSION_1_6
 
 version = "${config.mod_version}"
-group= "com.dogz.mods.CTM"
+group= "dechmods.CTM"
 archivesBaseName = "${config.mod_name}"
 
 minecraft {
