@@ -90,6 +90,10 @@ task sourceJar(type: Jar) {
     classifier = 'source'
 }
 
+task wrapper(type: Wrapper) {
+    gradleVersion = '2.0'
+}
+
 artifacts {
     archives deobfJar
 }

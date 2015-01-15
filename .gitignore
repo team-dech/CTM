@@ -1,6 +1,4 @@
 *.class
-/gradle/*
-/gradlew
 /*.bat
 /run/*
 /*.iml
